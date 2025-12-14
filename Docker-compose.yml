@@ -1,21 +1,21 @@
+version: '3.9'
 services:
   db:
-    image: mysql:8.0
+    image: mysql:8.1
+    container_name: db
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: creArte
-    volumes:
-      - db_data:/var/lib/mysql
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
-      timeout: 5s
-      retries: 10
+      retries: 5
 
   app:
     build: .
-    ports:
-      - "8000:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -23,6 +23,5 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/creArte?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-
-volumes:
-  db_data:
+    ports:
+      - "8080:8080"
