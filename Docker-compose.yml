@@ -5,6 +5,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: creArte
     volumes:
+      - db_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
       interval: 10s
