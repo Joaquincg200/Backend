@@ -31,7 +31,6 @@ public class SecurityConfig{
                                 "/v3/api-docs/**",
                                 "/swagger-resources/**",
                                 "/webjars/**",
-                                "/api/products/new",
                                 "/api/reviews/product/**",
                                 "/api/reviews/new",
                                 "/api/orders/new",
@@ -45,7 +44,8 @@ public class SecurityConfig{
                                 "/api/chatbot",
                                 "/api/products/random",
                                 "api/orders/**"
-                        ).permitAll()
+                        ).permitAll().
+                        requestMatchers("/api/products/new").hasAuthority("VENDEDOR")
 
                 )
 
