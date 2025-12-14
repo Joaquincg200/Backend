@@ -22,7 +22,8 @@ public class SecurityConfig{
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/register",
+                        .requestMatchers("/api/**",
+                                "/api/users/register",
                                 "/api/users/login",
                                 "/api/products",
                                 // Swagger y OpenAPI
@@ -45,20 +46,6 @@ public class SecurityConfig{
                                 "/api/products/random",
                                 "api/orders/**"
                         ).permitAll()
-                        .requestMatchers("/api/**").permitAll()
-
-                        .requestMatchers("/api/orders/**",
-                                "/api/reviews/product/**",
-                                "/api/reviews/user/**",
-                                "/api/product/**").hasAuthority("COMPRADOR")
-
-                        .requestMatchers("/api/products/new",
-                                "/api/products/update/**",
-                                "/api/products/delete/**",
-                                "/api/orders/update/**",
-                                "/api/products/user/{idUser}").hasAuthority("VENDEDOR")
-
-                        .requestMatchers("/api/users").hasAuthority("ADMIN")
 
                 )
 
