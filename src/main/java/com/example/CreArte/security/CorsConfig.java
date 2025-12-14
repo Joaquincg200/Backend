@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("https://crearte.com") // tu frontend
+                        .allowedOrigins("https://crearte-production.up.railway.app") // tu frontend
                         .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
