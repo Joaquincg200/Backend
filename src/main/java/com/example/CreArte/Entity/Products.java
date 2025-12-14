@@ -25,7 +25,7 @@ public class Products {
     private CategoryEnum category;
     private int stock;
     @Lob
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "LONGTEXT")
     private String image;
     private LocalDate createdAt;
     private LocalDate updatedAt;
