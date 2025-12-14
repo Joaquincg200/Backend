@@ -16,7 +16,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("https://crearte-production.up.railway.app") // tu frontend real
+                        .allowedOrigins("http://localhost:5173", "https://backend-production-1d333.up.railway.app/") // tu frontend real
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
